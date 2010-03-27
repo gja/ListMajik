@@ -44,6 +44,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="PushChangesAPITest.cs" />
     <Compile Include="CopyItemsTest.cs" />
     <Compile Include="Extensions\Extensions.cs" />
     <Compile Include="PushChangesExecutionTest.cs" />

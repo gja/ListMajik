@@ -7,19 +7,34 @@ namespace ListMajik
 {
     public static class PushChanges
     {
-        public static IPushChangesProperties<T, T> PushChangesTo<T>(this INotifyCollectionChanged observed, ICollection<T> output)
-        {
-            return new PushChangesProperties<T, T>(observed, output);
-        }
-
         public static IPushChangesProperties<TSource, TDest> PushChangesTo<TSource, TDest>(this INotifyCollectionChanged observed, ICollection<TDest> output)
         {
             return new PushChangesProperties<TSource, TDest>(observed, output);
         }
 
+        public static IPushChangesProperties<T, T> PushChangesTo<T>(this INotifyCollectionChanged observed, ICollection<T> output)
+        {
+            return PushChangesTo<T, T>(observed, output);
+        }
+
         public static IPushChangesProperties<TSource, TDest> PushChangesTo<TSource, TDest>(this ObservableCollection<TSource> observed, ICollection<TDest> output)
         {
-            return new PushChangesProperties<TSource, TDest>(observed, output);
+            return PushChangesTo<TSource, TDest>((INotifyCollectionChanged) observed, output);
+        }
+
+        public static IPushChangesProperties<TSource, TDest> MonitorChangesTo<TSource, TDest>(this ICollection<TDest> output, INotifyCollectionChanged observed)
+        {
+            return PushChangesTo<TSource, TDest>(observed, output);
+        }
+
+        public static IPushChangesProperties<T, T> MonitorChangesTo<T>(this ICollection<T> output, INotifyCollectionChanged observed)
+        {
+            return PushChangesTo(observed, output);
+        }
+
+        public static IPushChangesProperties<TSource, TDest> MonitorChangesTo<TSource, TDest>(this ICollection<TDest> output, ObservableCollection<TSource> observed)
+        {
+            return PushChangesTo(observed, output);
         }
     }
 
