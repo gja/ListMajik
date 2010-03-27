@@ -4,7 +4,7 @@ using NUnit.Framework.SyntaxHelpers;
 
 namespace ListMajikTest.Extensions
 {
-    static class CollectionX
+    static class Extensions
     {
         public static void ShouldContain<T>(this ICollection collection, T item)
         {
@@ -16,9 +16,9 @@ namespace ListMajikTest.Extensions
             Assert.That(collection, Has.No.Member(item));
         }
 
-        public static void ShouldBe(this int i, int count)
+        public static void ShouldBe(this object me, object other)
         {
-            Assert.AreEqual(count, i);
+            Assert.AreEqual(other, me);
         }
     }
 }
