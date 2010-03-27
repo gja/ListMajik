@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace ListMajik
+﻿namespace ListMajik
 {
     class ExecutePushChanges<TSource, TDest> : IExecutePushChanges<TSource, TDest>
     {
@@ -28,6 +26,23 @@ namespace ListMajik
         public IPushChangesProperties<TSource, TDest> Afterwards()
         {
             return AfterAdding().Execute(action).AfterRemoving();
+        }
+
+        public IPushChangesProperties<TSource, TDest> BeforeAdding()
+        {
+            properties.executeBeforeAdding += action;
+            return properties;
+        }
+
+        public IPushChangesProperties<TSource, TDest> BeforeRemoving()
+        {
+            properties.executeBeforeRemoving += action;
+            return properties;
+        }
+
+        public IPushChangesProperties<TSource, TDest> Before()
+        {
+            return BeforeAdding().Execute(action).BeforeRemoving();
         }
     }
 }

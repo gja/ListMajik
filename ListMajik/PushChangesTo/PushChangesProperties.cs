@@ -9,8 +9,10 @@ namespace ListMajik
     {
         private readonly ICollection<TDest> output;
         
-        internal event ExecuteOnSource<TSource> executeAfterAdding = source => { };
-        internal event ExecuteOnSource<TSource> executeAfterRemoving = source => { };
+        internal event ExecuteOnSource<TSource> executeBeforeAdding = source => { };
+        internal event ExecuteOnSource<TSource> executeBeforeRemoving = source => { };
+        internal event ExecuteOnSource<TSource> executeAfterAdding = source => { };        
+        internal event ExecuteOnSource<TSource> executeAfterRemoving = source => { };        
 
         private Func<TSource, TDest> mapping = source => (TDest) (object) source;
         private Predicate<TSource> addCondition = source => true;
@@ -25,28 +27,29 @@ namespace ListMajik
 
         private void SomethingChanged(object sender, NotifyCollectionChangedEventArgs e)
         {
-            RunActionOver(e.NewItems, output.Add, addCondition, executeAfterAdding);
-            RunActionOver(e.OldItems, item => output.Remove(item), removeCondition, executeAfterRemoving);
+            RunActionOver(e.NewItems, output.Add, addCondition, executeBeforeAdding, executeAfterAdding);
+            RunActionOver(e.OldItems, item => output.Remove(item), removeCondition, executeBeforeRemoving, executeAfterRemoving);
         }
 
-        private void RunActionOver(IList items, Action<TDest> action, Predicate<TSource> predicate, ExecuteOnSource<TSource> postCallback)
+        private void RunActionOver(IList items, Action<TDest> action, Predicate<TSource> predicate, ExecuteOnSource<TSource> preCallback, ExecuteOnSource<TSource> postCallback)
         {
             if (items == null)
                 return;
 
             foreach (var item in items)
             {
-                ExecuteOnItem(action, (TSource) item, predicate, postCallback);
+                ExecuteOnItem(action, (TSource) item, predicate, preCallback, postCallback);
             }
         }
 
-        private void ExecuteOnItem(Action<TDest> action, TSource item, Predicate<TSource> predicate, ExecuteOnSource<TSource> postCallback)
+        private void ExecuteOnItem(Action<TDest> action, TSource item, Predicate<TSource> predicate, ExecuteOnSource<TSource> preCallback, ExecuteOnSource<TSource> postCallback)
         {
             if (!predicate(item))
                 return;
             
+            preCallback(item);
             action(mapping(item));
-            postCallback(item);
+            postCallback(item);            
         }
 
         public IPushChangesProperties<TSource, TDest> WithMapping(Func<TSource, TDest> mapping)

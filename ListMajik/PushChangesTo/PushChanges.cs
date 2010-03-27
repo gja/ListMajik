@@ -40,5 +40,8 @@ namespace ListMajik
         IPushChangesProperties<TSource, TDest> AfterAdding();
         IPushChangesProperties<TSource, TDest> AfterRemoving();
         IPushChangesProperties<TSource, TDest> Afterwards();
+        IPushChangesProperties<TSource, TDest> BeforeAdding();
+        IPushChangesProperties<TSource, TDest> BeforeRemoving();
+        IPushChangesProperties<TSource, TDest> Before();
     }
 }
