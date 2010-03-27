@@ -39,9 +39,19 @@
     <Reference Include="System.Core">
       <RequiredTargetFramework>3.5</RequiredTargetFramework>
     </Reference>
+    <Reference Include="WindowsBase">
+      <RequiredTargetFramework>3.0</RequiredTargetFramework>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Extensions\CollectionX.cs" />
     <Compile Include="PushChangesToTest.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\ListMajik\ListMajik.csproj">
+      <Project>{E8FDF5EA-F296-40C1-AC4B-FE7BCA15B9AA}</Project>
+      <Name>ListMajik</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Properties\" />
