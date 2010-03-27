@@ -5,6 +5,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ListMajik", "ListMajik\List
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ListMajikTest", "ListMajikTest\ListMajikTest.csproj", "{987CCC57-6D39-49C4-87D5-40981E48E4C1}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ListMajik.Silverlight", "ListMajik\ListMajik.Silverlight.csproj", "{F895C8AB-3406-4C0F-9BA9-308A8CD479F2}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -19,6 +21,10 @@ Global
 		{987CCC57-6D39-49C4-87D5-40981E48E4C1}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{987CCC57-6D39-49C4-87D5-40981E48E4C1}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{987CCC57-6D39-49C4-87D5-40981E48E4C1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F895C8AB-3406-4C0F-9BA9-308A8CD479F2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F895C8AB-3406-4C0F-9BA9-308A8CD479F2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F895C8AB-3406-4C0F-9BA9-308A8CD479F2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F895C8AB-3406-4C0F-9BA9-308A8CD479F2}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
