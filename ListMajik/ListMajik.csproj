@@ -40,7 +40,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="PushChangesTo\IPushChangesProperties.cs" />
+    <Compile Include="PushChangesTo\PushChangesProperties.cs" />
     <Compile Include="PushChangesTo\PushChanges.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
