@@ -45,6 +45,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Extensions\CollectionX.cs" />
+    <Compile Include="PushChangesExecutionTest.cs" />
     <Compile Include="PushChangesToTest.cs" />
   </ItemGroup>
   <ItemGroup>

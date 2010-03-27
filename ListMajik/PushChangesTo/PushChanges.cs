@@ -23,11 +23,22 @@ namespace ListMajik
         }
     }
 
+    public delegate void ExecuteOnSource<TSource>(TSource item);
+
     public interface IPushChangesProperties<TSource, TDest>
     {
         IPushChangesProperties<TSource, TDest> WithMapping(Func<TSource, TDest> mapping);
         IPushChangesProperties<TSource, TDest> AddOnlyIf(Predicate<TSource> predicate);
         IPushChangesProperties<TSource, TDest> RemoveOnlyIf(Predicate<TSource> predicate);
         IPushChangesProperties<TSource, TDest> If(Predicate<TSource> predicate);
+        
+        IExecutePushChanges<TSource, TDest> Execute(ExecuteOnSource<TSource> action);
+    }
+
+    public interface IExecutePushChanges<TSource, TDest>
+    {
+        IPushChangesProperties<TSource, TDest> AfterAdding();
+        IPushChangesProperties<TSource, TDest> AfterRemoving();
+        IPushChangesProperties<TSource, TDest> Afterwards();
     }
 }

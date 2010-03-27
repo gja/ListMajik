@@ -15,5 +15,10 @@ namespace ListMajikTest.Extensions
         {
             Assert.That(collection, Has.No.Member(item));
         }
+
+        public static void ShouldBe(this int i, int count)
+        {
+            Assert.AreEqual(count, i);
+        }
     }
 }
