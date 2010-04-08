@@ -47,6 +47,7 @@
     <Compile Include="PushChangesTo\ExecutePushChanges.cs" />
     <Compile Include="PushChangesTo\PushChanges.cs" />
     <Compile Include="PushChangesTo\PushChangesProperties.cs" />
+    <Compile Include="WrappingEnumerator\WrappingEnumerator.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Properties\" />

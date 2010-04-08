@@ -39,6 +39,8 @@
     <Reference Include="System.Core">
       <RequiredTargetFramework>3.5</RequiredTargetFramework>
     </Reference>
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
     <Reference Include="WindowsBase">
       <RequiredTargetFramework>3.0</RequiredTargetFramework>
     </Reference>
@@ -49,6 +51,7 @@
     <Compile Include="Extensions\Extensions.cs" />
     <Compile Include="PushChangesExecutionTest.cs" />
     <Compile Include="PushChangesToTest.cs" />
+    <Compile Include="WrappingEnumeratorTest.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\ListMajik\ListMajik.csproj">
